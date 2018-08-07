@@ -62,7 +62,8 @@ macOS用户可以使用 [Homebrew](https://brew.sh/)进行安装:
     --force-generic-extractor       列出通用格式，并下载
    
     --default-search PREFIX         对不合法的URL使用此参数. 比如"gvsearch2:" 从谷歌视频下载两个视频为了 youtube-dl "large
-                                    apple". 使用 "auto"值 让youtube-dl 猜测 ("auto_warning" to emit a warning when guessing).                                     "error" 只抛出一个错误. 默认值为 "fixup_error" 修复毁掉的网址,如果这不能替代搜索，会提出一个错误
+                                    apple". 使用 "auto"值 让youtube-dl 猜测 ("auto_warning" to emit a warning when guessing). 
+                                    "error" 只抛出一个错误. 默认值为 "fixup_error" 修复毁掉的网址,如果这不能替代搜索，会提出一个错误
   
     --ignore-config                 不读取配置文件. 当全局配置文件中给出/etc/youtube-dl.conf: Do not read the user
                                      configuration in ~/.config/youtube-
