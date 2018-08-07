@@ -1,153 +1,121 @@
 [![Build Status](https://travis-ci.org/rg3/youtube-dl.svg?branch=master)](https://travis-ci.org/rg3/youtube-dl)
 
-youtube-dl - download videos from youtube.com or other video platforms
+youtube-dl - 从YouTube或其他视频平台下载视频
 
-- [INSTALLATION](#installation)
-- [DESCRIPTION](#description)
-- [OPTIONS](#options)
-- [CONFIGURATION](#configuration)
-- [OUTPUT TEMPLATE](#output-template)
-- [FORMAT SELECTION](#format-selection)
-- [VIDEO SELECTION](#video-selection)
-- [FAQ](#faq)
-- [DEVELOPER INSTRUCTIONS](#developer-instructions)
-- [EMBEDDING YOUTUBE-DL](#embedding-youtube-dl)
+- [安装](#installation)
+- [描述](#description)
+- [可选项](#options)
+- [配置](#configuration)
+- [输出模板](#output-template)
+- [格式选择](#format-selection)
+- [视频选择](#video-selection)
+- [问答](#faq)
+- [开发者指令](#developer-instructions)
+- [嵌入 YOUTUBE-DL](#embedding-youtube-dl)
 - [BUGS](#bugs)
-- [COPYRIGHT](#copyright)
+- [版权说明](#copyright)
 
 # INSTALLATION
 
-To install it right away for all UNIX users (Linux, macOS, etc.), type:
+立即为所有的UNIX用户安装 (Linux, macOS, etc.), 在终端输入:
 
     sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
     sudo chmod a+rx /usr/local/bin/youtube-dl
 
-If you do not have curl, you can alternatively use a recent wget:
+如果你没有curl命令, 你也可以使用 wget:
 
     sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
     sudo chmod a+rx /usr/local/bin/youtube-dl
 
-Windows users can [download an .exe file](https://yt-dl.org/latest/youtube-dl.exe) and place it in any location on their [PATH](https://en.wikipedia.org/wiki/PATH_%28variable%29) except for `%SYSTEMROOT%\System32` (e.g. **do not** put in `C:\Windows\System32`).
+Windows 用户可以 [下载此.exe文件](https://yt-dl.org/latest/youtube-dl.exe) 并且把他们放在任意位置 [PATH](https://en.wikipedia.org/wiki/PATH_%28variable%29) 除了 `%SYSTEMROOT%\System32` (例如不要放入`C:\Windows\System32`).
 
-You can also use pip:
-
+你也可以使用pip进行安装
     sudo -H pip install --upgrade youtube-dl
     
-This command will update youtube-dl if you have already installed it. See the [pypi page](https://pypi.python.org/pypi/youtube_dl) for more information.
+如果你已经安装了youtube-dl，这条命令将会更新它. 可以看这里 [pypi page](https://pypi.python.org/pypi/youtube_dl) 来获取更多信息。
 
-macOS users can install youtube-dl with [Homebrew](https://brew.sh/):
+macOS用户可以使用 [Homebrew](https://brew.sh/)进行安装:
 
     brew install youtube-dl
 
-Or with [MacPorts](https://www.macports.org/):
+或者用 [MacPorts](https://www.macports.org/):
 
     sudo port install youtube-dl
 
-Alternatively, refer to the [developer instructions](#developer-instructions) for how to check out and work with the git repository. For further options, including PGP signatures, see the [youtube-dl Download Page](https://rg3.github.io/youtube-dl/download.html).
+另外, 参考 [开发指令](#developer-instructions)章节去如何检查使用git仓库. 有关其他的选项, 包括 PGP 签名, 参考 [youtube-dl下载页](https://rg3.github.io/youtube-dl/download.html).
 
-# DESCRIPTION
-**youtube-dl** is a command-line program to download videos from YouTube.com and a few more sites. It requires the Python interpreter, version 2.6, 2.7, or 3.2+, and it is not platform specific. It should work on your Unix box, on Windows or on macOS. It is released to the public domain, which means you can modify it, redistribute it or use it however you like.
+# 描述
+**youtube-dl** 是从 YouTube.com或其他一些网站上下载视频的命令行工具 ，它需要python解释器版本为 2.6, 2.7, or 3.2+, 他并不是一个平台专有的，可以在UNIX系、Windows或者Mac上使用，它使用Unlicense协议，所以你可以随便用任意分发，作者放弃对作品的全部权利。
 
-    youtube-dl [OPTIONS] URL [URL...]
+    youtube-dl [选项] URL [链接...]
 
-# OPTIONS
-    -h, --help                       Print this help text and exit
-    --version                        Print program version and exit
-    -U, --update                     Update this program to latest version. Make
-                                     sure that you have sufficient permissions
-                                     (run with sudo if needed)
-    -i, --ignore-errors              Continue on download errors, for example to
-                                     skip unavailable videos in a playlist
-    --abort-on-error                 Abort downloading of further videos (in the
-                                     playlist or the command line) if an error
-                                     occurs
-    --dump-user-agent                Display the current browser identification
-    --list-extractors                List all supported extractors
-    --extractor-descriptions         Output descriptions of all supported
-                                     extractors
-    --force-generic-extractor        Force extraction to use the generic
-                                     extractor
-    --default-search PREFIX          Use this prefix for unqualified URLs. For
-                                     example "gvsearch2:" downloads two videos
-                                     from google videos for youtube-dl "large
-                                     apple". Use the value "auto" to let
-                                     youtube-dl guess ("auto_warning" to emit a
-                                     warning when guessing). "error" just throws
-                                     an error. The default value "fixup_error"
-                                     repairs broken URLs, but emits an error if
-                                     this is not possible instead of searching.
-    --ignore-config                  Do not read configuration files. When given
-                                     in the global configuration file
-                                     /etc/youtube-dl.conf: Do not read the user
+# 选项
+    -h, --help                      输出帮助信息并退出
+    --version                       输出程序版本并退出
+    -U, --update                    将程序更新到最新版本. 请确认你有足够的权限 (如果需要的话请使用sudo)
+                                    
+    -i, --ignore-errors             忽略错误继续下载,。比如以列表为单位下载发现存在错误或不可用视频，忽略错误或不可用视频，继续下载
+    --abort-on-error                如果出现错误发生，中止下载更多的视频（在播放列表或命令行）
+    --dump-user-agent               显示当前的浏览器标识
+    --list-extractors               列出所有支持下载的网站
+    --extractor-descriptions        列出所有支持下载的网站的描述
+    --force-generic-extractor       列出通用格式，并下载
+   
+    --default-search PREFIX         对不合法的URL使用此参数. 比如"gvsearch2:" 从谷歌视频下载两个视频为了 youtube-dl "large
+                                    apple". 使用 "auto"值 让youtube-dl 猜测 ("auto_warning" to emit a warning when guessing).                                     "error" 只抛出一个错误. 默认值为 "fixup_error" 修复毁掉的网址,如果这不能替代搜索，会提出一个错误
+  
+    --ignore-config                 不读取配置文件. 当全局配置文件中给出/etc/youtube-dl.conf: Do not read the user
                                      configuration in ~/.config/youtube-
                                      dl/config (%APPDATA%/youtube-dl/config.txt
                                      on Windows)
-    --config-location PATH           Location of the configuration file; either
-                                     the path to the config or its containing
-                                     directory.
-    --flat-playlist                  Do not extract the videos of a playlist,
-                                     only list them.
-    --mark-watched                   Mark videos watched (YouTube only)
-    --no-mark-watched                Do not mark videos watched (YouTube only)
-    --no-color                       Do not emit color codes in output
+    --config-location PATH          配置文件的位置; 配置路径或其包含目录。
+    --flat-playlist                 只列出播放列表的视频，不提取下载。
+    --mark-watched                  标记已关注的视频 (仅限YouTube)
+    --no-mark-watched               不标记已关注的视频 (仅限YouTube )
+    --no-color                      在输出信息中不输出有颜色的代码
 
-## Network Options:
-    --proxy URL                      Use the specified HTTP/HTTPS/SOCKS proxy.
-                                     To enable SOCKS proxy, specify a proper
-                                     scheme. For example
-                                     socks5://127.0.0.1:1080/. Pass in an empty
-                                     string (--proxy "") for direct connection
-    --socket-timeout SECONDS         Time to wait before giving up, in seconds
-    --source-address IP              Client-side IP address to bind to
-    -4, --force-ipv4                 Make all connections via IPv4
-    -6, --force-ipv6                 Make all connections via IPv6
+## 网络选项:
+    --proxy URL                     使用指定的HTTP / HTTPS / SOCKS代理。
+                                    要启用SOCKS代理，请指定正确的代理方案
+                                    比如 socks5://127.0.0.1:1080/. 
+                                    参数可以使用一个空字符串(--proxy "") 用于直接连接
+    --socket-timeout SECONDS        代理超时放弃的时间, 以秒为单位
+    --source-address IP             要绑定的客户端IP地址
+    -4, --force-ipv4                通过IPV4建立所有连接
+    -6, --force-ipv6                通过IPV6建立所有连接
 
-## Geo Restriction:
-    --geo-verification-proxy URL     Use this proxy to verify the IP address for
-                                     some geo-restricted sites. The default
-                                     proxy specified by --proxy (or none, if the
-                                     option is not present) is used for the
-                                     actual downloading.
-    --geo-bypass                     Bypass geographic restriction via faking
-                                     X-Forwarded-For HTTP header
-    --no-geo-bypass                  Do not bypass geographic restriction via
-                                     faking X-Forwarded-For HTTP header
-    --geo-bypass-country CODE        Force bypass geographic restriction with
-                                     explicitly provided two-letter ISO 3166-2
-                                     country code
-    --geo-bypass-ip-block IP_BLOCK   Force bypass geographic restriction with
-                                     explicitly provided IP block in CIDR
-                                     notation
+## 地区限制
+    --geo-verification-proxy URL     使用此代理验证IP地址对一些对地区有限制的站点. 
+                                     用于实际下载的默认代理是由 --proxy指定，如果不存在选项就没有
+    --geo-bypass                     通过伪造HTTP头部信息的XFF头绕过地区限制
+                                     
+    --no-geo-bypass                  伪造HTTP头部信息的XFF头但不绕过地区限制
+                                    
+    --geo-bypass-country CODE        使用明确提供的双字母ISO 3166-2国家/地区代码强制绕过地理限制
+    --geo-bypass-ip-block IP_BLOCK   在CIDR表示法（CIDR notation）中用明确提供的IP块绕过地理约束
 
-## Video Selection:
-    --playlist-start NUMBER          Playlist video to start at (default is 1)
-    --playlist-end NUMBER            Playlist video to end at (default is last)
-    --playlist-items ITEM_SPEC       Playlist video items to download. Specify
-                                     indices of the videos in the playlist
-                                     separated by commas like: "--playlist-items
-                                     1,2,5,8" if you want to download videos
-                                     indexed 1, 2, 5, 8 in the playlist. You can
-                                     specify range: "--playlist-items
-                                     1-3,7,10-13", it will download the videos
-                                     at index 1, 2, 3, 7, 10, 11, 12 and 13.
-    --match-title REGEX              Download only matching titles (regex or
-                                     caseless sub-string)
-    --reject-title REGEX             Skip download for matching titles (regex or
-                                     caseless sub-string)
-    --max-downloads NUMBER           Abort after downloading NUMBER files
-    --min-filesize SIZE              Do not download any videos smaller than
-                                     SIZE (e.g. 50k or 44.6m)
-    --max-filesize SIZE              Do not download any videos larger than SIZE
-                                     (e.g. 50k or 44.6m)
-    --date DATE                      Download only videos uploaded in this date
-    --datebefore DATE                Download only videos uploaded on or before
-                                     this date (i.e. inclusive)
-    --dateafter DATE                 Download only videos uploaded on or after
-                                     this date (i.e. inclusive)
-    --min-views COUNT                Do not download any videos with less than
-                                     COUNT views
-    --max-views COUNT                Do not download any videos with more than
-                                     COUNT views
+
+
+## 视频选择:
+    --playlist-start NUMBER          视频列表从NUMBER参数开始(默认为1)
+    --playlist-end NUMBER            视频列表以END参数结束 (默认为最后一个)
+    --playlist-items ITEM_SPEC       用于下载的视频列表条目. 指定播放列表中的视频索引，用逗号隔开
+                                     如果你想现在视频列表中的"1, 2, 5, 8":"--playlist-items 1,2,5,8"
+                                     你也可以指定范围"--playlist-items 1-3,7,10-13"：
+                                     这将下载视频列表中从头开始的 1, 2, 3, 7, 10,11,12,13.
+                                     
+    --match-title REGEX              只下载匹配的标题，通过正则表达式或者下标字符串(caseless sub-string)
+    --reject-title REGEX             跳过下载指定的标题 通过正则表达式或者下标字符串(caseless sub-string)
+    --max-downloads NUMBER           下载NUMBER参数指定的数量之后停止下载
+    --min-filesize SIZE              不下载小于SIZE参数指定大小的视频。  SIZE例如 50k 或者 44.6m
+                                   
+    --max-filesize SIZE              不下载大于SIZE参数指定大小的视频。  SIZE例如 50k 或者 44.6m
+                                     
+    --date DATE                      只下载DATE参数指定的日期上传的视频
+    --datebefore DATE                只下载DATE参数指定的日期或更早上传的视频
+    --dateafter DATE                 只下载DATE参数指定的日期或更晚上传的视频
+    --min-views COUNT                不要下载少于COUNT视图的任何视频
+    --max-views COUNT                不要下载超过COUNT视图的任何视频
     --match-filter FILTER            Generic video filter. Specify any key (see
                                      the "OUTPUT TEMPLATE" for a list of
                                      available keys) to match if the key is
