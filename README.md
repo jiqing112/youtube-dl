@@ -2,9 +2,9 @@
 
 youtube-dl - 从YouTube或其他视频平台下载视频
 
-- [安装](#installation)
-- [描述](#description)
-- [可选项](#options)
+- [安装](#安装)
+- [描述](#描述)
+- [选项](#选项)
 - [配置](#configuration)
 - [输出模板](#output-template)
 - [格式选择](#format-selection)
@@ -15,7 +15,7 @@ youtube-dl - 从YouTube或其他视频平台下载视频
 - [BUGS](#bugs)
 - [版权说明](#copyright)
 
-# INSTALLATION
+# 安装
 
 立即为所有的UNIX用户安装 (Linux, macOS, etc.), 在终端输入:
 
