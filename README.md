@@ -115,7 +115,7 @@ macOS用户可以使用 [Homebrew](https://brew.sh/)进行安装:
     --date DATE                      只下载DATE参数指定的日期上传的视频
     --datebefore DATE                只下载DATE参数指定的日期或更早上传的视频
     --dateafter DATE                 只下载DATE参数指定的日期或更晚上传的视频
-    --min-views COUNT                不要下载少于COUNT视图的任何视频
+    --min-views COUNT                不要下载少于COUNT视图的任何视频(这里的count我想应该是分页，我没试过)
     --max-views COUNT                不要下载超过COUNT视图的任何视频
     --match-filter FILTER            Generic video filter. Specify any key (see
                                      the "OUTPUT TEMPLATE" for a list of
@@ -136,46 +136,39 @@ macOS用户可以使用 [Homebrew](https://brew.sh/)进行安装:
                                      service), but who also have a description,
                                      use --match-filter "like_count > 100 &
                                      dislike_count <? 50 & description" .
-    --no-playlist                    Download only the video, if the URL refers
-                                     to a video and a playlist.
-    --yes-playlist                   Download the playlist, if the URL refers to
-                                     a video and a playlist.
-    --age-limit YEARS                Download only videos suitable for the given
-                                     age
-    --download-archive FILE          Download only videos not listed in the
-                                     archive file. Record the IDs of all
-                                     downloaded videos in it.
-    --include-ads                    Download advertisements as well
-                                     (experimental)
-
-## Download Options:
-    -r, --limit-rate RATE            Maximum download rate in bytes per second
+    --no-playlist                    如果URL引用视频和播放列表，仅下载视频
+                                     
+    --yes-playlist                  如果URL引用视频和播放列表，仅下载列表
+                                     
+    --age-limit YEARS                下载给定的年份(YEARS)的视频
+                                     
+    --download-archive FILE          仅下载存档文件中未被列出的视频，记录在期中已下载视频的ID
+                                     
+                                     
+    --include-ads                    同时下载广告
+                                   
+## 下载选项:
+    -r, --limit-rate RATE            最大下载速率，以字节数每秒为单位
                                      (e.g. 50K or 4.2M)
-    -R, --retries RETRIES            Number of retries (default is 10), or
-                                     "infinite".
-    --fragment-retries RETRIES       Number of retries for a fragment (default
-                                     is 10), or "infinite" (DASH, hlsnative and
-                                     ISM)
-    --skip-unavailable-fragments     Skip unavailable fragments (DASH, hlsnative
-                                     and ISM)
-    --abort-on-unavailable-fragment  Abort downloading when some fragment is not
-                                     available
-    --keep-fragments                 Keep downloaded fragments on disk after
-                                     downloading is finished; fragments are
-                                     erased by default
-    --buffer-size SIZE               Size of download buffer (e.g. 1024 or 16K)
-                                     (default is 1024)
-    --no-resize-buffer               Do not automatically adjust the buffer
-                                     size. By default, the buffer size is
-                                     automatically resized from an initial value
-                                     of SIZE.
-    --http-chunk-size SIZE           Size of a chunk for chunk-based HTTP
-                                     downloading (e.g. 10485760 or 10M) (default
-                                     is disabled). May be useful for bypassing
-                                     bandwidth throttling imposed by a webserver
-                                     (experimental)
-    --playlist-reverse               Download playlist videos in reverse order
-    --playlist-random                Download playlist videos in random order
+    -R, --retries RETRIES            重新尝试次数 (默认是 10), 也可以是 "infinite"（无穷）
+                                    
+    --fragment-retries RETRIES       重新尝试下载分段的次数 (默认为10，也可以是 "infinite"（无穷）
+                                     
+    --skip-unavailable-fragments      跳过无效的片段 
+    
+    --abort-on-unavailable-fragment   当有的片段无效时候，退出下载
+                                    
+    --keep-fragments                  下载完成之后将片段保存在磁盘上(默认下载完成会自动删除的)
+                                    
+    --buffer-size SIZE                下载的缓冲区(buffer)大小 (e.g. 1024 or 16K)
+                                      (default is 1024)
+    --no-resize-buffer                不去自动调整buffer缓冲区。默认情况下buffer缓冲区大小
+                                      自动被初始化数值重新设定
+                                     
+    --http-chunk-size SIZE           基于块的HTTP下载的块的大小（例如10485760或10M）（默认为禁用）。 
+                                     可能有助于绕过网络服务器强加的带宽限制（实验性）
+    --playlist-reverse               以相反的顺序下载播放列表视频
+    --playlist-random                以随机的方式下载播放列表视频
     --xattr-set-filesize             Set file xattribute ytdl.filesize with
                                      expected file size
     --hls-prefer-native              Use the native HLS downloader instead of
