@@ -1,6 +1,10 @@
 [![Build Status](https://travis-ci.org/rg3/youtube-dl.svg?branch=master)](https://travis-ci.org/rg3/youtube-dl)
 
-youtube-dl - 从YouTube或其他视频平台下载视频
+youtube-dl ： 从YouTube或其他视频平台下载视频  
+
+写在前面的话：
+  翻译这份文档仅仅是为了以后更方便的查询youtube-dl的使用，但是本人水平太次，不得不依靠各类翻译工具去理解，也很那保证翻译的准确性，一切以原文档为标准，我这里仅供参考。可以看看[youtube-dl的简略使用]（https://github.com/jiqing112/youtube-dl/blob/master/youtube-dl%E4%BD%BF%E7%94%A8%E7%AE%80%E7%95%A5.md）
+
 
 - [安装](#安装)
 - [描述](#描述)
