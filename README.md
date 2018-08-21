@@ -177,21 +177,18 @@ macOS用户可以使用 [Homebrew](https://brew.sh/)进行安装:
                                      可能有助于绕过网络服务器强加的带宽限制（实验性）
     --playlist-reverse               以相反的顺序下载播放列表视频
     --playlist-random                以随机的方式下载播放列表视频
-    --xattr-set-filesize             Set file xattribute ytdl.filesize with
-                                     expected file size
-    --hls-prefer-native              Use the native HLS downloader instead of
-                                     ffmpeg
-    --hls-prefer-ffmpeg              Use ffmpeg instead of the native HLS
-                                     downloader
-    --hls-use-mpegts                 Use the mpegts container for HLS videos,
-                                     allowing to play the video while
-                                     downloading (some players may not be able
-                                     to play it)
-    --external-downloader COMMAND    Use the specified external downloader.
-                                     Currently supports
-                                     aria2c,avconv,axel,curl,ffmpeg,httpie,wget
-    --external-downloader-args ARGS  Give these arguments to the external
-                                     downloader
+    --xattr-set-filesize             设置文件(xattribute ytdl.filesize)使用预期的文件大小设置文件
+    --hls-prefer-native              使用原来的HLS来替代ffmpeg
+    --hls-prefer-ffmpeg              使用ffm朋友来代替原生HLS下载
+    --hls-use-mpegts                 使用mpegts容器获取HLS视频，
+                                      允许在下载时播放视频（某些播放器可能无法播放）
+                                     
+    --external-downloader COMMAND    使用指定的外部下载程序。目前支持以下:
+                                      aria2c,avconv,axel,curl,ffmpeg,httpie,wget
+                                  
+                                     
+    --external-downloader-args ARGS  将这些参数提供给外部下载
+                                     
 
 ## Filesystem Options:
     -a, --batch-file FILE            File containing URLs to download ('-' for
