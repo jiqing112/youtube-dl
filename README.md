@@ -191,26 +191,17 @@ macOS用户可以使用 [Homebrew](https://brew.sh/)进行安装:
                                      
 
 ## Filesystem Options:
-    -a, --batch-file FILE            File containing URLs to download ('-' for
-                                     stdin), one URL per line. Lines starting
-                                     with '#', ';' or ']' are considered as
-                                     comments and ignored.
-    --id                             Use only video ID in file name
-    -o, --output TEMPLATE            Output filename template, see the "OUTPUT
-                                     TEMPLATE" for all the info
-    --autonumber-start NUMBER        Specify the start value for %(autonumber)s
-                                     (default is 1)
-    --restrict-filenames             Restrict filenames to only ASCII
-                                     characters, and avoid "&" and spaces in
-                                     filenames
-    -w, --no-overwrites              Do not overwrite files
-    -c, --continue                   Force resume of partially downloaded files.
-                                     By default, youtube-dl will resume
-                                     downloads if possible.
-    --no-continue                    Do not resume partially downloaded files
-                                     (restart from beginning)
-    --no-part                        Do not use .part files - write directly
-                                     into output file
+    -a, --batch-file FILE            包含要下载的URL的文件 ('-' for
+                                     stdin), 每行一个URL。 以'＃'开头的行，';' 或']'被视为评论并被忽略。
+    --id                             仅在文件名中使用视频ID
+    -o, --output TEMPLATE            输出临时的文件名, 查看所有信息的“输出模板”
+    --autonumber-start NUMBER        指定的起始值 %(autonumber)s  (默认为 1)
+                                    
+    --restrict-filenames             将文件名限制为仅ASCII 字符，并避免使用“＆”和空格文件名
+    -w, --no-overwrites              不去覆盖文件
+    -c, --continue                  强制恢复部分下载的文件(断点续传？)。尽可能的默认情况下，youtube-dl将恢复下载
+    --no-continue                    不要恢复部分下载的文件（从头开始重启）
+    --no-part                        不使用 .part files - 直接写入输出文件
     --no-mtime                       Do not use the Last-modified header to set
                                      the file modification time
     --write-description              Write video description to a .description
